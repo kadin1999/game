@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url('background.png');
+  }
+  
+  #resident {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    transition: bottom 0.2s;
+  }
+  
+  .projectile {
+    width: 70px; /* Adjust this to fit the size of your image */
+    height: 70px; /* Adjust this to fit the size of your image */
+    position: absolute;
+    z-index: 10;
+    /* Default animation set to throwLeftAnimation */
+    background-image: url('your-image-path.png'); /* Update this to your chosen projectile image */
+    background-size: cover; /* Ensures the image fits the element's size */
+  }
+  
+  #enemy {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: -150px; /* Starts off-screen */
+  }
+  
+  /* Player's projectile animation - throws left */
+  @keyframes throwLeftAnimation {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-300px) translateY(-50px); /* Move left with an arc */
+    }
+    100% {
+      transform: translateX(-600px) translateY(0); /* Final position further left */
+    }
+  }
+  
+  /* AI's projectile animation - throws right */
+  @keyframes throwRightAnimation {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(300px) translateY(-50px); /* Move right with an arc */
+    }
+    100% {
+      transform: translateX(600px) translateY(0); /* Final position further right */
+    }
+  }
+  
+  /* Animation for when projectile hits the enemy */
+  .hit {
+    animation: flashRed 0.2s;
+  }
+  
+  @keyframes flashRed {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(0.5) invert(1); }
+    100% { filter: brightness(1); }
+  }
+  
